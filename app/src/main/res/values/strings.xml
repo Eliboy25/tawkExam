@@ -1,0 +1,11 @@
+<resources>
+
+
+    <string name="app">Git Users</string>
+    <string name="Followers">Followers : </string>
+    <string name="Following">Following : </string>
+    <string name="name">Name : </string>
+    <string name="company">Company : </string>
+    <string name="blog">Blog : </string>
+    <string name="notes">Notes:</string>
+</resources>

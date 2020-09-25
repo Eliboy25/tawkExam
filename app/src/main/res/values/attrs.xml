@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AvatarView">
+        <attr name="initials" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="ZoomableImageView">
+        <attr name="maxZoom" format="float"/>
+        <attr name="minZoom" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="DragAndDropLayout">
+        <attr name="isPreview" format="boolean"/>
+    </declare-styleable>
+</resources>

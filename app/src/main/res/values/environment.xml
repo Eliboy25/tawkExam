@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="environment_name" translatable="false">Staging</string>
+    <string name="environment_socket" translatable="false">wss://</string>
+    <string name="environment_admin_code" translatable="false"></string>
+</resources>
