@@ -47,8 +47,8 @@ class UserAdapter(
             }
 
 
-            val isDivisibleBy20 = (position + 1) % 4 === 0
-            if (isDivisibleBy20) {
+            Log.e("ITEM", "--" + item.isInverted)
+            if (item.isInverted == true) {
                 var bitmap : Bitmap? = null
                 val urlImage = URL(item.avatar_url)
 

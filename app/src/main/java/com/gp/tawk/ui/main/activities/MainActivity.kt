@@ -1,6 +1,7 @@
 package com.gp.tawk.ui.main.activities
 
 import android.annotation.SuppressLint
+import android.content.IntentFilter
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
 import com.gp.tawk.R
+import com.gp.tawk.core.service.Receiver
 import com.gp.tawk.ui.githubList.controllers.GitUserController
 import javax.inject.Inject
 
@@ -54,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         initMainRouterChangeListener()
         initNavigationRouters()
+        initService()
     }
 
 
@@ -69,6 +72,13 @@ class MainActivity : AppCompatActivity() {
             disposable.clear()
             super.onBackPressed()
         }
+    }
+
+    fun initService(){
+        val receiver = Receiver()
+        val intentFilter = IntentFilter()
+        intentFilter.addAction("action.net.conn.CONNECTIVITY_CHANGE")
+        registerReceiver(receiver,intentFilter)
     }
 
 

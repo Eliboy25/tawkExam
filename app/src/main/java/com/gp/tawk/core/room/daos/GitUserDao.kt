@@ -8,8 +8,14 @@ interface GitUserDao {
     @get:Query("SELECT * FROM Profile")
     val get: MutableList<GitUserEntity>
 
-    @Query("SELECT * FROM Profile WHERE login LIKE :query")
+    @Query("SELECT * FROM Profile WHERE login OR notes LIKE :query")
     fun getUser(query:String): MutableList<GitUserEntity>
+
+    @Query("SELECT * FROM Profile WHERE id= :id")
+    fun getUserById(id:Int): GitUserEntity
+
+    @Query("SELECT count(*) FROM Profile")
+    fun getCount(): Int
 
 
     @Query("DELETE FROM Profile")

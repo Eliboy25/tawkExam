@@ -11,5 +11,8 @@ import com.gp.tawk.core.room.entities.*
     ], version = 1
 )
 abstract class AppDataBase : RoomDatabase() {
+    var TEST_MODE = false
+
+
     abstract fun gitUserDao(): GitUserDao
 }

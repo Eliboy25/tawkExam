@@ -1,5 +1,11 @@
 package com.gp.tawk.ui.githubList.controllers
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +19,7 @@ import com.gp.tawk.base.BaseLifeCycleController
 import com.gp.tawk.core.extensions.*
 import com.gp.tawk.core.network.TaskStatus
 import com.gp.tawk.core.room.entities.GitUserEntity
+import com.gp.tawk.core.service.Receiver
 import com.gp.tawk.ui.githubList.viewModels.GitUserViewModel
 import com.gp.tawk.ui.githubList.views.GitUserView
 import com.gp.tawk.ui.githubList.views.UserDelegate
@@ -33,12 +40,17 @@ class GitUserController : BaseLifeCycleController<GitUserViewModel>(), UserDeleg
         return GitUserView(container.context).also {
             this.contentView = it
             it.delegate = this
-            contentView.showInitLoading()
-            viewModel.getUsersFromDb()
 
+            initCall()
 
 
         }
+    }
+
+    fun initCall(){
+        contentView.showInitLoading()
+        viewModel.getUsersFromDb()
+
     }
 
     override fun observeChanges() {

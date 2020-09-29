@@ -28,6 +28,15 @@ class GitUserViewModel @Inject constructor(
 
         GlobalScope.launch(work = {
             var response = apiClient.getUsers(since)
+            for (i in response.indices) {
+                if(i == 3){
+                    response[i].isInverted = true
+                    break
+                }
+
+
+            }
+
 
             githubUsers.addAll(response)
             appDataBase.gitUserDao().insert(githubUsers)

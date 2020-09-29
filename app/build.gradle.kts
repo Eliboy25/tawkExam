@@ -107,6 +107,7 @@ dependencies {
     api(Libraries.dependency_kotlin_coroutines_android)
     api(Libraries.dependency_dagger)
     api(Libraries.dependency_assisted_inject)
+    androidTestImplementation("androidx.test:rules:1.3.0")
 
     kapt(Libraries.kapt_dagger_compiler)
     kapt(Libraries.kapt_assisted_inject)
@@ -173,4 +174,11 @@ dependencies {
 
 
     implementation(Libraries.dependency_shimmer)
+
+
+    implementation(TestLibraries.test_dependency_junit)
+    implementation(TestLibraries.test_dependency_androidx_test_runner)
+    implementation(TestLibraries.test_dependency_androidx_espresso_core)
+
+
 }
