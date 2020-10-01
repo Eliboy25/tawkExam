@@ -11,6 +11,7 @@ import com.gp.tawk.base.BaseLifeCycleController
 import com.gp.tawk.core.extensions.isNetworkAvailable
 import com.gp.tawk.core.extensions.showError
 import com.gp.tawk.core.network.TaskStatus
+import com.gp.tawk.core.room.entities.GitUserEntity
 import com.gp.tawk.ui.githubList.controllers.GitUserController
 import com.gp.tawk.ui.profile.viewModels.ProfileViewModel
 import com.gp.tawk.ui.profile.views.ProfileDelegate
@@ -30,15 +31,18 @@ class ProfileController(bundle: Bundle) : BaseLifeCycleController<ProfileViewMod
             this.contentView = it
             it.delegate = this
 
-            var user = args.getString("user")
-            if (contentView.context.isNetworkAvailable()) {
+            var user = args.getParcelable<GitUserEntity>("user")
 
-                contentView.showLoading()
-                user?.let { it1 -> viewModel.getUserProfle(it1) }
-            } else {
-                contentView.showError("No internet connection!")
-            }
-
+           if (user?.notes.isNullOrEmpty()) {
+               if (contentView.context.isNetworkAvailable()) {
+                   contentView.showLoading()
+                   user?.login?.let { it1 -> viewModel.getUserProfle(it1) }
+               } else {
+                   contentView.showError("No internet connection!")
+               }
+           }else{
+               user?.let { it1 -> contentView.setDetails(it1) }
+           }
 
         }
     }

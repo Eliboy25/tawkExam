@@ -59,6 +59,13 @@ class ProfileView(context: Context) : FrameLayout(context) {
         tvFollowers.text = userEntity.followers.toString()
         tvFollowing.text = userEntity.following.toString()
 
+        if(userEntity.notes.isNullOrEmpty()){
+            etNote.setText("")
+        }else{
+            etNote.setText(userEntity.notes.toString())
+        }
+
+
 
         Glide.with(context!!).load(userEntity.avatar_url)
             .fitCenter()

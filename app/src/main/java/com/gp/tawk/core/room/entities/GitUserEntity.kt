@@ -74,6 +74,6 @@ data class GitUserEntity(
     @ColumnInfo val created_at: String? = null,
     @SerializedName("updated_at")
     @ColumnInfo val updated_at: String? = null,
-    @ColumnInfo val notes: String? = "",
+    @ColumnInfo var notes: String? = null,
     @ColumnInfo var isInverted: Boolean? = false
 ) : Parcelable

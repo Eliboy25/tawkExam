@@ -37,6 +37,7 @@ class GitUserController : BaseLifeCycleController<GitUserViewModel>(), UserDeleg
     }
 
     override fun onCreateControllerView(inflater: LayoutInflater, container: ViewGroup): View {
+        retainViewMode = RetainViewMode.RETAIN_DETACH
         return GitUserView(container.context).also {
             this.contentView = it
             it.delegate = this
@@ -131,7 +132,7 @@ class GitUserController : BaseLifeCycleController<GitUserViewModel>(), UserDeleg
 
     override fun onItemClicked(user: GitUserEntity) {
         Log.e("CLICK"," " + user.login)
-        globalRouter.pushController(ProfileController(bundleOf("user" to user.login)))
+        globalRouter.pushController(ProfileController(bundleOf("user" to user)))
     }
 
     override fun loadMore(lastId : Int) {

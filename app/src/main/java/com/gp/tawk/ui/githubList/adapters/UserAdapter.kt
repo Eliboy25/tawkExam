@@ -40,6 +40,7 @@ class UserAdapter(
             Log.e("username", item.login + " Email : " + item.email + "  Notes :  " + item.notes)
             tvUserName.text = item.login
             tvDetails.text = item.html_url
+
             if (item.notes.isNullOrEmpty()){
                 ivNote.visibility = View.GONE
             }else{
@@ -64,7 +65,7 @@ class UserAdapter(
                             Glide.with(context!!)
                                 .load(this)
                                 .placeholder(R.drawable.ic_person)
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                                 .into(profile_image)
                         }
                     }
